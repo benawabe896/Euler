@@ -22,16 +22,26 @@ getcontext().prec = 100 # working precision = 100 digits
 ti = time.time()
 
 longest_sequence = 0
+longest_whole = 0
+longest_num = 0
+
 for i in range(2,1001):
-    whole = str(D(1) / D(i))[::-1]
-    print whole
+    whole = str(D(1) / D(i))
+    print whole + " " + str(i)
     cycle = ""
     for ch in whole:
-        if ch in cycle:
-            sequence = len(cycle) - string.find(cycle, ch)
-            if sequence > longest_sequence:
-                longest_sequence = sequence
-            break
+        if len(cycle) > 20:
+            if cycle == cycle[::-1]:
+                break
+                
+            if cycle[:4] == cycle[-4:]:
+                sequence = len(cycle) - 4
+                if sequence > longest_sequence:
+                    longest_sequence = sequence
+                    longest_whole = whole
+                    longest_num = i
         cycle += ch
+print longest_num
 print longest_sequence
+print longest_whole
 print "Time taken(secs):", time.time() - ti

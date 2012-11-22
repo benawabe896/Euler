@@ -13,4 +13,5 @@ for i in itertools.permutations('0123456789'):
         print i
         break
     incr += 1
+
 print "Time taken(secs):", time.time() - ti
