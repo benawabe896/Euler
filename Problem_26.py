@@ -17,6 +17,27 @@ import time, sys, math, string
 from decimal import Decimal as D
 from decimal import getcontext
 
+def is_prime(n):
+	if n <= 1:
+		return False
+	for i in range(2,n):
+		if n% i == 0: 
+			return False
+	return True
+
+n = 997   #starting prime closest to limit
+for p in range(n, 1 ,-2):
+    if not is_prime(p): continue
+    c = 1
+    while (pow(10, c) - 1) % p != 0:
+        c += 1
+    if (p-c) == 1: break
+ 
+print "Answer to PE26 = ",p
+sys.exit()
+
+
+
 getcontext().prec = 100 # working precision = 100 digits
 
 ti = time.time()
